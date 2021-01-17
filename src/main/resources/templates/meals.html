@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>products</title>
+</head>
+<body>
+<div align="center">
+    <h1>LISTA POSILKOW</h1>
+    <br/> <br/>
+    <table border="1" cellpadding="10">
+        <thead>
+
+        <th>Name</th>
+        <th>KCAL</th>
+
+
+
+        </thead>
+        <tbody>
+        <tr th:each="meal:${listMeals}">
+            <td th:text="${meal.getName()}">Name</td>
+            <td th:text="${meal.getKcal()}">KCAL</td>
+            <td>
+                <a th:href="@{'/meals/delete/' + ${meal.getId()}}">Delete</a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+   <a th:href="@{'products/'}">ADD NEW PRODUCT</a>
+</div>
+
+</body>
+</html>

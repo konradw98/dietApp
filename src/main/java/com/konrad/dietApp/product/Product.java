@@ -13,6 +13,7 @@ public class Product {
     private int id;
     private String productName;
     private int kcal;
+    private String description;
 
 
 
@@ -22,6 +23,15 @@ public class Product {
         this.id = productId;
         this.productName = productName;
         this.kcal = kcal;
+        this.description=description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getProductId() {

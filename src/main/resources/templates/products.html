@@ -13,6 +13,8 @@
         <th>ID</th>
         <th>Name</th>
         <th>KCAL</th>
+        <th>DESCRIPTION</th>
+
 
         </thead>
         <tbody>
@@ -20,7 +22,9 @@
             <td th:text="${product.getProductId()}">ID</td>
             <td th:text="${product.getProductName()}">Name</td>
             <td th:text="${product.getKcal()}">KCAL</td>
-            <td><a th:href="@{'/products/delete/'+${product.getProductId()}}">DODAJ TU POWINO BYC A SIE USUWA</a>
+            <td th:text="${product.getDescription()}">DESCRIPTION</td>
+
+            <td><a th:href="@{'/products/save/'+${product.getProductId()}}">ADD</a>
                <a th:href="@{'/products/' + ${product.getProductId()}+'/suppliers'}">SHOW SUPPLIERS</a>
                <!-- <a th:href="@{'/suppliers/'}">SHOW SUPPLIERS</a> -->
             </td>
@@ -28,6 +32,9 @@
         </tr>
         </tbody>
     </table>
+
+
+    <a th:href="@{'/meals'}">BACK TO MEALS</a>
 </div>
 
 </body>
