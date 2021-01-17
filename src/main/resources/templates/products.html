@@ -13,13 +13,17 @@
         <th>ID</th>
         <th>Name</th>
         <th>KCAL</th>
+
         </thead>
         <tbody>
         <tr th:each="product:${listProducts}">
             <td th:text="${product.getProductId()}">ID</td>
             <td th:text="${product.getProductName()}">Name</td>
             <td th:text="${product.getKcal()}">KCAL</td>
-            <td><a th:href="@{'/delete/'+${product.getProductId()}}">DELETE PRODUCT</a> </td>
+            <td><a th:href="@{'/products/delete/'+${product.getProductId()}}">DODAJ TU POWINO BYC A SIE USUWA</a>
+               <!-- <a th:href="@{'/products/' + ${product.getProductId()}+'/suppliers'}">SHOW SUPPLIERS</a> -->
+                <a th:href="@{'/suppliers/'}">SHOW SUPPLIERS</a>
+            </td>
 
         </tr>
         </tbody>

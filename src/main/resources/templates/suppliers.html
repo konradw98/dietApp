@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>products</title>
+</head>
+<body>
+<div align="center">
+    <h1>LISTA DOSTAWCOW</h1>
+    <br/> <br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Opinion</th>
+        </thead>
+        <tbody>
+        <tr th:each="supplier:${listSuppliers}">
+            <td th:text="${supplier.getSupplierId()}">ID</td>
+            <td th:text="${supplier.getSupplierName()}">Name</td>
+            <td th:text="${supplier.getSupplierAdress()}">Address</td>
+            <td th:text="${supplier.getOpinion()}">Opinion</td>
+
+
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{'/products/'}">PRZEJDZ DO LISTY PRODUKTOW</a>
+</div>
+
+</body>
+</html>

@@ -15,4 +15,8 @@ public class ProductService {
         return products;
     }
 
+    public void delete(int id){
+        productRepository.deleteById(id);
+    }
+
 }
