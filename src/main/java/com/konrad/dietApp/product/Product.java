@@ -1,30 +1,35 @@
 package com.konrad.dietApp.product;
 
+import com.konrad.dietApp.supplier.Supplier;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+
 
 @Entity
 public class Product {
 
     @Id
-    private int productId;
+    private int id;
     private String productName;
     private int kcal;
+
+
 
     public Product(){}
 
     public Product(int productId, String productName, int kcal) {
-        this.productId = productId;
+        this.id = productId;
         this.productName = productName;
         this.kcal = kcal;
     }
 
     public int getProductId() {
-        return productId;
+        return id;
     }
 
     public void setProductId(int productId) {
-        this.productId = productId;
+        this.id = productId;
     }
 
     public String getProductName() {

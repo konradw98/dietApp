@@ -1,7 +1,8 @@
 package com.konrad.dietApp.supplier;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.konrad.dietApp.product.Product;
+
+import javax.persistence.*;
 
 @Entity
 public class Supplier {
@@ -11,13 +12,26 @@ public class Supplier {
     private String supplierAdress;
     private String opinion;
 
+    @ManyToOne
+    Product product;
+
     public Supplier(){}
 
-    public Supplier(int supplierId, String supplierName, String supplierAdress, String opinion) {
+    public Supplier(int supplierId, String supplierName, String supplierAdress, String opinion, Product product) {
         this.supplierId = supplierId;
         this.supplierName = supplierName;
         this.supplierAdress = supplierAdress;
         this.opinion = opinion;
+        this.product=product;
+
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public int getSupplierId() {
