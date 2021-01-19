@@ -12,6 +12,7 @@ public class Meal {
     private int carbo;
     private int fat;
     private float kcal;
+    private int portions=1;
 
     public Meal(){};
     public Meal(int id, String name, float kcal, int protein, int fat, int carbo) {
@@ -69,5 +70,13 @@ public class Meal {
 
     public void setFat(int fat) {
         this.fat = fat;
+    }
+
+    public int getPortions() {
+        return portions;
+    }
+
+    public void setPortions(int portions) {
+        this.portions = portions;
     }
 }
