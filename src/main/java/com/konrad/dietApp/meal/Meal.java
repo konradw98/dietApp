@@ -8,13 +8,19 @@ public class Meal {
     @Id
     private int id;
     private String name;
-    private String kcal;
+    private int protein;
+    private int carbo;
+    private int fat;
+    private float kcal;
 
     public Meal(){};
-    public Meal(int id, String name, String kcal) {
+    public Meal(int id, String name, float kcal, int protein, int fat, int carbo) {
         this.id = id;
         this.name = name;
         this.kcal = kcal;
+        this.protein=protein;
+        this.carbo=carbo;
+        this.fat=fat;
     }
 
     public int getId() {
@@ -33,11 +39,35 @@ public class Meal {
         this.name = name;
     }
 
-    public String getKcal() {
+    public float getKcal() {
         return kcal;
     }
 
-    public void setKcal(String kcal) {
+    public void setKcal(float kcal) {
         this.kcal = kcal;
+    }
+
+    public int getProtein() {
+        return protein;
+    }
+
+    public void setProtein(int protein) {
+        this.protein = protein;
+    }
+
+    public int getCarbo() {
+        return carbo;
+    }
+
+    public void setCarbo(int carbo) {
+        this.carbo = carbo;
+    }
+
+    public int getFat() {
+        return fat;
+    }
+
+    public void setFat(int fat) {
+        this.fat = fat;
     }
 }

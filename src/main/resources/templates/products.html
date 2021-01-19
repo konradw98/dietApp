@@ -12,6 +12,9 @@
         <thead>
         <th>ID</th>
         <th>Name</th>
+        <th>PROTEIN</th>
+        <th>CARBO</th>
+        <th>FAT</th>
         <th>KCAL</th>
         <th>DESCRIPTION</th>
 
@@ -21,6 +24,9 @@
         <tr th:each="product:${listProducts}">
             <td th:text="${product.getId()}">ID</td>
             <td th:text="${product.getName()}">Name</td>
+            <td th:text="${product.getProtein()}">PROTEIN</td>
+            <td th:text="${product.getCarbo()}">CARBO</td>
+            <td th:text="${product.getFat()}">FAT</td>
             <td th:text="${product.getKcal()}">KCAL</td>
             <td th:text="${product.getDescription()}">DESCRIPTION</td>
 

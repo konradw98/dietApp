@@ -39,7 +39,10 @@ public class ProductController {
         Optional<Product> product= productService.getProductById(id);
       Meal meal= new Meal();
       meal.setName(product.get().getName());
-      meal.setKcal(Integer.toString(product.get().getKcal()));
+      meal.setCarbo(product.get().getCarbo());
+      meal.setFat(product.get().getFat());
+      meal.setProtein(product.get().getProtein());
+      meal.setKcal(product.get().getKcal());
       meal.setId(i);
       mealService.save(meal);
       System.out.println(meal.getId()+meal.getName());

@@ -11,19 +11,28 @@ public class Supplier {
     private String name;
     private String adress;
     private String opinion;
-
+    private String phoneNumber;
     @ManyToOne
     Product product;
 
     public Supplier(){}
 
-    public Supplier(int id, String name, String adress, String opinion, Product product) {
+    public Supplier(int id, String name, String adress, String opinion,String phoneNumber ,Product product) {
         this.id = id;
         this.name = name;
         this.adress = adress;
         this.opinion = opinion;
         this.product=product;
+        this.phoneNumber=phoneNumber;
 
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public Product getProduct() {

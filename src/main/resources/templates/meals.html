@@ -12,7 +12,11 @@
         <thead>
 
         <th>Name</th>
+        <th>PROTEIN</th>
+        <th>CARBO</th>
+        <th>FAT</th>
         <th>KCAL</th>
+
 
 
 
@@ -20,6 +24,9 @@
         <tbody>
         <tr th:each="meal:${listMeals}">
             <td th:text="${meal.getName()}">Name</td>
+            <td th:text="${meal.getProtein()}">PROTEIN</td>
+            <td th:text="${meal.getCarbo()}">CARBO</td>
+            <td th:text="${meal.getFat()}">FAT</td>
             <td th:text="${meal.getKcal()}">KCAL</td>
             <td>
                 <a th:href="@{'/meals/delete/' + ${meal.getId()}}">Delete</a>
