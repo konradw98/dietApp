@@ -7,9 +7,9 @@ import javax.persistence.*;
 @Entity
 public class Supplier {
     @Id
-    private int supplierId;
-    private String supplierName;
-    private String supplierAdress;
+    private int id;
+    private String name;
+    private String adress;
     private String opinion;
 
     @ManyToOne
@@ -17,10 +17,10 @@ public class Supplier {
 
     public Supplier(){}
 
-    public Supplier(int supplierId, String supplierName, String supplierAdress, String opinion, Product product) {
-        this.supplierId = supplierId;
-        this.supplierName = supplierName;
-        this.supplierAdress = supplierAdress;
+    public Supplier(int id, String name, String adress, String opinion, Product product) {
+        this.id = id;
+        this.name = name;
+        this.adress = adress;
         this.opinion = opinion;
         this.product=product;
 
@@ -34,28 +34,28 @@ public class Supplier {
         this.product = product;
     }
 
-    public int getSupplierId() {
-        return supplierId;
+    public int getId() {
+        return id;
     }
 
-    public void setSupplierId(int supplierId) {
-        this.supplierId = supplierId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getSupplierName() {
-        return supplierName;
+    public String getName() {
+        return name;
     }
 
-    public void setSupplierName(String supplierName) {
-        this.supplierName = supplierName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getSupplierAdress() {
-        return supplierAdress;
+    public String getAdress() {
+        return adress;
     }
 
-    public void setSupplierAdress(String supplierAdress) {
-        this.supplierAdress = supplierAdress;
+    public void setAdress(String adress) {
+        this.adress = adress;
     }
 
     public String getOpinion() {

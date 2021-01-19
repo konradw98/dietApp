@@ -19,13 +19,13 @@
         </thead>
         <tbody>
         <tr th:each="product:${listProducts}">
-            <td th:text="${product.getProductId()}">ID</td>
-            <td th:text="${product.getProductName()}">Name</td>
+            <td th:text="${product.getId()}">ID</td>
+            <td th:text="${product.getName()}">Name</td>
             <td th:text="${product.getKcal()}">KCAL</td>
             <td th:text="${product.getDescription()}">DESCRIPTION</td>
 
-            <td><a th:href="@{'/products/save/'+${product.getProductId()}}">ADD</a>
-               <a th:href="@{'/products/' + ${product.getProductId()}+'/suppliers'}">SHOW SUPPLIERS</a>
+            <td><a th:href="@{'/products/save/'+${product.getId()}}">ADD</a>
+               <a th:href="@{'/products/' + ${product.getId()}+'/suppliers'}">SHOW SUPPLIERS</a>
                <!-- <a th:href="@{'/suppliers/'}">SHOW SUPPLIERS</a> -->
             </td>
 

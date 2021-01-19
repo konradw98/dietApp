@@ -38,7 +38,7 @@ public class ProductController {
         i++;
         Optional<Product> product= productService.getProductById(id);
       Meal meal= new Meal();
-      meal.setName(product.get().getProductName());
+      meal.setName(product.get().getName());
       meal.setKcal(Integer.toString(product.get().getKcal()));
       meal.setId(i);
       mealService.save(meal);

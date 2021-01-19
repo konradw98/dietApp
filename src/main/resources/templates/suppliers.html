@@ -17,9 +17,9 @@
         </thead>
         <tbody>
         <tr th:each="supplier:${listSuppliers}">
-            <td th:text="${supplier.getSupplierId()}">ID</td>
-            <td th:text="${supplier.getSupplierName()}">Name</td>
-            <td th:text="${supplier.getSupplierAdress()}">Address</td>
+            <td th:text="${supplier.getId()}">ID</td>
+            <td th:text="${supplier.getName()}">Name</td>
+            <td th:text="${supplier.getAdress()}">Address</td>
             <td th:text="${supplier.getOpinion()}">Opinion</td>
 
 

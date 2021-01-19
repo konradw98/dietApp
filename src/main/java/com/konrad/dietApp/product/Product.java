@@ -11,7 +11,7 @@ public class Product {
 
     @Id
     private int id;
-    private String productName;
+    private String name;
     private int kcal;
     private String description;
 
@@ -19,9 +19,9 @@ public class Product {
 
     public Product(){}
 
-    public Product(int productId, String productName, int kcal) {
-        this.id = productId;
-        this.productName = productName;
+    public Product(int id, String name, int kcal, String description) {
+        this.id = id;
+        this.name = name;
         this.kcal = kcal;
         this.description=description;
     }
@@ -34,20 +34,20 @@ public class Product {
         this.description = description;
     }
 
-    public int getProductId() {
+    public int getId() {
         return id;
     }
 
-    public void setProductId(int productId) {
+    public void setId(int productId) {
         this.id = productId;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getName() {
+        return name;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setName(String productName) {
+        this.name = name;
     }
 
     public int getKcal() {
