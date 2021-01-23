@@ -23,4 +23,8 @@ public class MealService {
     public void deleteMeal(int id){
         mealRepository.deleteById(id);
     }
+
+    public float getSumKcal(){
+        return mealRepository.getSumKcal();
+    }
 }

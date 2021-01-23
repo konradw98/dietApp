@@ -21,6 +21,8 @@ public class MealController {
     public String viewAllMeals(Model model){
         List<Meal> listMeals=mealService.findAllMeals();
         model.addAttribute("listMeals",listMeals);
+        float sumKcal=mealService.getSumKcal();
+        model.addAttribute("sumKcal",sumKcal);
         return "meals";
     }
 
@@ -43,5 +45,7 @@ public class MealController {
 
         return "redirect:/meals";
     }
+
+
 
 }

@@ -7,7 +7,9 @@
 <body>
 <div align="center">
     <h1>LISTA POSILKOW</h1>
-    <br/> <br/>
+    <a th:href="@{'products/'}">ADD  PRODUCT FROM LIST</a> </br>
+    <a th:href="@{'new_meal/'}">ADD  YOUR OWN MEAL</a>
+</br>
     <table border="1" cellpadding="10">
         <thead>
 
@@ -31,6 +33,11 @@
             <td th:text="${meal.getKcal()}">KCAL</td>
             <td th:text="${meal.getPortions()}">PORTION</td>
 
+            <td><form action="/meal/changePortions">
+                Change Portions <input type="text" name="mealPortion">
+                <input type="submit">
+            </form></td>
+
             <td>
                 <a th:href="@{'/meals/delete/' + ${meal.getId()}}">Delete</a>
             </td>
@@ -38,8 +45,8 @@
         </tr>
         </tbody>
     </table>
-   <a th:href="@{'products/'}">ADD  PRODUCT FROM LIST</a>
-    <a th:href="@{'new_meal/'}">ADD  YOUR OWN MEAL</a>
+    <p>SUMA  DZIENNA KALORII:</p>
+ <p th:text="${sumKcal}">  </p>
 </div>
 
 </body>
