@@ -19,7 +19,7 @@
         <th>FAT</th>
         <th>KCAL</th>
         <th>PORTIONS</th>
-
+        <th>CHANGE PORTIONS</th>
 
 
 
@@ -32,21 +32,22 @@
             <td th:text="${meal.getFat()}">FAT</td>
             <td th:text="${meal.getKcal()}">KCAL</td>
             <td th:text="${meal.getPortions()}">PORTION</td>
-
-            <td><form action="/meal/changePortions">
-                Change Portions <input type="text" name="mealPortion">
-                <input type="submit">
-            </form></td>
+            <td><form action=# th:action="@{'/meals/updatePortion/'+${meal.getId()}}">
+                <fieldset>
+                    <input type="text" th:field="*{newPortion}"/>
+                    <input type="submit" value="ZWIEKSZ PORCJE DWUKROTNIE!"/>
+                </fieldset>
+            </form>
 
             <td>
+
                 <a th:href="@{'/meals/delete/' + ${meal.getId()}}">Delete</a>
             </td>
-
         </tr>
         </tbody>
     </table>
-    <p>SUMA  DZIENNA KALORII:</p>
- <p th:text="${sumKcal}">  </p>
+
+    <p >SUMA DZIENNA KCAL:<span th:text="${sumKcal}"></span> </p>
 </div>
 
 </body>

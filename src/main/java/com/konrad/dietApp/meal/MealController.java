@@ -23,12 +23,14 @@ public class MealController {
         model.addAttribute("listMeals",listMeals);
         float sumKcal=mealService.getSumKcal();
         model.addAttribute("sumKcal",sumKcal);
+      String newPortion="5";
+       model.addAttribute("newPortion",newPortion);
         return "meals";
     }
 
-    @RequestMapping("/meals/delete/{id}")
+    @RequestMapping(value = "/meals/delete/{id}")
     public String deleteMeal(@PathVariable(name="id") int id){
-        mealService.deleteMeal(id);
+        mealService.deleteMealById(id);
         return "redirect:/meals";
     }
     @RequestMapping("/new_meal")
@@ -38,14 +40,32 @@ public class MealController {
 
         return "new_meal";
     }
+    @RequestMapping(value="/delete")
+    public String deleteProduct(@ModelAttribute("meal") Meal meal){
+        mealService.deleteMealByObject(meal);
+        System.out.println(meal.getId()+meal.getName());
 
-    @RequestMapping(value="/save", method= RequestMethod.POST)
+        return "redirect:/meals";
+    }
+
+    @RequestMapping(value="/save")
     public String saveProduct(@ModelAttribute("meal") Meal meal){
         mealService.save(meal);
 
         return "redirect:/meals";
     }
+   // @RequestMapping(value="updatePortions")
+  //  public String updatePortions(@ModelAttribute("meal") Meal meal,)
+//meals/upatePortion/'+${meal.getId()}}
+//meals/updatePortion/'+${meal.getId()}}
+   @RequestMapping(value = "/meals/updatePortion/{id}")
+   public String updatePortion(@PathVariable(name="id") int id){// @ModelAttribute("newPortion") String newPortion){
+
+       //System.out.println("id:"+id+" newPortion"+newPortion);
+       mealService.updatePortionById(id, 2);
 
 
+       return "redirect:/meals";
+   }
 
 }

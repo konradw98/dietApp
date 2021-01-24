@@ -20,11 +20,20 @@ public class MealService {
 
     }
 
-    public void deleteMeal(int id){
+    public void deleteMealById(int id){
         mealRepository.deleteById(id);
     }
+    public void deleteMealByObject(Meal meal){
+        mealRepository.delete(meal);
+    }
+
 
     public float getSumKcal(){
         return mealRepository.getSumKcal();
     }
+
+    public void updatePortionById(int id, int newPortion){
+        mealRepository.updatePortionById(id, newPortion);
+    }
+
 }
