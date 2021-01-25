@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Id;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface MealRepository  extends JpaRepository<Meal, Integer> {
@@ -19,4 +20,7 @@ public interface MealRepository  extends JpaRepository<Meal, Integer> {
     void updatePortionById(int id, int newPortion);
     @Query(value="SELECT * FROM meal WHERE meal.email=?1", nativeQuery = true)
     List<Meal> findAllByEmail(String email);
+
+    @Query(value="SELECT * FROM meal WHERE meal.email=?1 AND meal.date=?2",nativeQuery = true)
+    List<Meal> findAllByEmailAndDate(String email, LocalDate date);
 }

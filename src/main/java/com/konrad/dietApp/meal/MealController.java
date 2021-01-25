@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -20,14 +21,19 @@ public class MealController {
 
     @RequestMapping("/meals")
     public String viewAllMeals(Model model){
-        List<Meal> listMeals=mealService.findAllMealsByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        List<Meal> listMeals=mealService.findAllMealsByEmailAndDate(SecurityContextHolder.getContext().getAuthentication().getName(),LocalDate.now());
         model.addAttribute("listMeals",listMeals);
         float sumKcal=mealService.getSumKcal();
         model.addAttribute("sumKcal",sumKcal);
-      String newPortion="5";
+         String newPortion="2";
        model.addAttribute("newPortion",newPortion);
+
+
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        LocalDate date=LocalDate.now();
         System.out.println("/meals aktualny uzytkownik"+name);
+        System.out.println("/meals aktualna data"+date);
+        System.out.println("lista posilkow"+listMeals);
         return "meals";
     }
 
@@ -54,6 +60,7 @@ public class MealController {
     @RequestMapping(value="/save")
     public String saveProduct(@ModelAttribute("meal") Meal meal){
         meal.setEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        meal.setDate(LocalDate.now());
         mealService.save(meal);
 
         return "redirect:/meals";
@@ -71,5 +78,13 @@ public class MealController {
 
        return "redirect:/meals";
    }
+
+    @RequestMapping("/allMeals")
+    public String viewAllMealsByUser(Model model){
+        List<Meal> listMeals=mealService.findAllMealsByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        model.addAttribute("listMeals",listMeals);
+
+        return "all_meals";
+    }
 
 }

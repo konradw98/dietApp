@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>products</title>
+</head>
+<body>
+<div align="center">
+    <h1>LISTA POSILKOW TWOICH WSZYSTKICH POSIŁKÓW</h1>
+    <a th:href="@{'/meals'}">BACK TO MEALS</a>
+    </br>
+    <table border="1" cellpadding="10">
+        <thead>
+
+        <th>Name</th>
+        <th>PROTEIN</th>
+        <th>CARBO</th>
+        <th>FAT</th>
+        <th>KCAL</th>
+        <th>DATE</th>
+
+
+
+
+        </thead>
+        <tbody>
+        <tr th:each="meal:${listMeals}">
+            <td th:text="${meal.getName()}">Name</td>
+            <td th:text="${meal.getProtein()}">PROTEIN</td>
+            <td th:text="${meal.getCarbo()}">CARBO</td>
+            <td th:text="${meal.getFat()}">FAT</td>
+            <td th:text="${meal.getKcal()}">KCAL</td>
+            <td th:text="${meal.getDate()}">DATE<td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

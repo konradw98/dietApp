@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,6 +47,7 @@ public class ProductController {
       meal.setKcal(product.get().getKcal());
       meal.setId(i);
       meal.setEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+      meal.setDate(LocalDate.now());
       mealService.save(meal);
       System.out.println(meal.getId()+meal.getName());
 

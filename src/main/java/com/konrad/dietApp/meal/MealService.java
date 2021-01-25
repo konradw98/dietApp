@@ -2,8 +2,10 @@ package com.konrad.dietApp.meal;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -23,6 +25,10 @@ public class MealService {
         return mealRepository.findAllByEmail(email);
 
     }
+   public List<Meal> findAllMealsByEmailAndDate(String email, LocalDate date){
+        return  mealRepository.findAllByEmailAndDate(email,date);
+   }
+
 
     public void deleteMealById(int id){
         mealRepository.deleteById(id);

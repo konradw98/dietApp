@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 
 @Entity
 public class Meal {
@@ -18,9 +19,10 @@ public class Meal {
     private float kcal;
     private int portions=1;
     private String email;
+    LocalDate date;
 
     public Meal(){};
-    public Meal(int id, String name, float kcal, int protein, int fat, int carbo,String email) {
+    public Meal(int id, String name, float kcal, int protein, int fat, int carbo,String email, LocalDate date) {
         this.id = id;
         this.name = name;
         this.kcal = kcal;
@@ -28,6 +30,15 @@ public class Meal {
         this.carbo=carbo;
         this.fat=fat;
         this.email=email;
+        this.date=date;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public String getEmail() {
