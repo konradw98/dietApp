@@ -20,7 +20,7 @@ public class MealController {
 
     @RequestMapping("/meals")
     public String viewAllMeals(Model model){
-        List<Meal> listMeals=mealService.findAllMeals();
+        List<Meal> listMeals=mealService.findAllMealsByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
         model.addAttribute("listMeals",listMeals);
         float sumKcal=mealService.getSumKcal();
         model.addAttribute("sumKcal",sumKcal);

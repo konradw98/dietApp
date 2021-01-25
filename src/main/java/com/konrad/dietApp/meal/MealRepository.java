@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Id;
+import java.util.List;
 
 public interface MealRepository  extends JpaRepository<Meal, Integer> {
     @Query(value = "SELECT SUM(meal.kcal) FROM meal", nativeQuery = true)
@@ -16,4 +17,6 @@ public interface MealRepository  extends JpaRepository<Meal, Integer> {
     @Transactional
     @Query(value="UPDATE meal SET meal.portions=meal.portions*?2, meal.kcal=meal.kcal*?2, meal.protein=meal.protein*?2, meal.carbo=meal.carbo*?2, meal.fat=meal.fat*?2 WHERE meal.id=?1", nativeQuery = true)
     void updatePortionById(int id, int newPortion);
+    @Query(value="SELECT * FROM meal WHERE meal.email=?1", nativeQuery = true)
+    List<Meal> findAllByEmail(String email);
 }

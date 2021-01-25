@@ -15,8 +15,12 @@ public class MealService {
         mealRepository.save(meal);
     }
 
-    List<Meal> findAllMeals(){
+    public List<Meal> findAllMeals(){
         return mealRepository.findAll();
+
+    }
+    public List<Meal> findAllMealsByEmail(String email){
+        return mealRepository.findAllByEmail(email);
 
     }
 
