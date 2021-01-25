@@ -17,15 +17,25 @@ public class Meal {
     private int fat;
     private float kcal;
     private int portions=1;
+    private String email;
 
     public Meal(){};
-    public Meal(int id, String name, float kcal, int protein, int fat, int carbo) {
+    public Meal(int id, String name, float kcal, int protein, int fat, int carbo,String email) {
         this.id = id;
         this.name = name;
         this.kcal = kcal;
         this.protein=protein;
         this.carbo=carbo;
         this.fat=fat;
+        this.email=email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public int getId() {

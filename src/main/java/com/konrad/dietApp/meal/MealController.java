@@ -53,6 +53,7 @@ public class MealController {
 
     @RequestMapping(value="/save")
     public String saveProduct(@ModelAttribute("meal") Meal meal){
+        meal.setEmail(SecurityContextHolder.getContext().getAuthentication().getName());
         mealService.save(meal);
 
         return "redirect:/meals";

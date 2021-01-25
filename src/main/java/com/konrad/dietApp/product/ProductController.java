@@ -3,6 +3,7 @@ package com.konrad.dietApp.product;
 import com.konrad.dietApp.meal.Meal;
 import com.konrad.dietApp.meal.MealService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,6 +45,7 @@ public class ProductController {
       meal.setProtein(product.get().getProtein());
       meal.setKcal(product.get().getKcal());
       meal.setId(i);
+      meal.setEmail(SecurityContextHolder.getContext().getAuthentication().getName());
       mealService.save(meal);
       System.out.println(meal.getId()+meal.getName());
 
