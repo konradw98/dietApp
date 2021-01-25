@@ -2,6 +2,7 @@ package com.konrad.dietApp.meal;
 
 import com.konrad.dietApp.product.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,6 +26,8 @@ public class MealController {
         model.addAttribute("sumKcal",sumKcal);
       String newPortion="5";
        model.addAttribute("newPortion",newPortion);
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        System.out.println("/meals aktualny uzytkownik"+name);
         return "meals";
     }
 
