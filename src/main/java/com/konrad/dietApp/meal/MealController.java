@@ -23,19 +23,22 @@ public class MealController {
 
     @RequestMapping("/meals")
     public String viewAllMeals(Model model){
-        List<Meal> listMeals=mealService.findAllMealsByEmailAndDate(SecurityContextHolder.getContext().getAuthentication().getName(),LocalDate.now());
+        String email=SecurityContextHolder.getContext().getAuthentication().getName();
+        LocalDate date=LocalDate.now();
+        List<Meal> listMeals=mealService.findAllMealsByEmailAndDate(email,date);
         model.addAttribute("listMeals",listMeals);
-        float sumKcal=mealService.getSumKcal();
+        Float sumKcal=mealService.getSumKcalByEmailAndDate(email, date); //Float zamiast float, zeby obslugiwas "null" 
+
         model.addAttribute("sumKcal",sumKcal);
          String newPortion="2";
        model.addAttribute("newPortion",newPortion);
 
 
-        String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        LocalDate date=LocalDate.now();
-        System.out.println("/meals aktualny uzytkownik"+name);
-        System.out.println("/meals aktualna data"+date);
-        System.out.println("lista posilkow"+listMeals);
+        //String name = SecurityContextHolder.getContext().getAuthentication().getName();
+       // LocalDate date=LocalDate.now();
+        //System.out.println("/meals aktualny uzytkownik"+name);
+       // System.out.println("/meals aktualna data"+date);
+       // System.out.println("lista posilkow"+listMeals);
         return "meals";
     }
 

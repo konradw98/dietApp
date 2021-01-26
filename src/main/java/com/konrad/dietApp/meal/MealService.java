@@ -42,6 +42,9 @@ public class MealService {
         return mealRepository.getSumKcal();
     }
 
+    public Float getSumKcalByEmailAndDate(String email,LocalDate date){
+        return mealRepository.getSumKcalByEmailAndDate(email, date);
+    }
     public void updatePortionById(int id, int newPortion){
         mealRepository.updatePortionById(id, newPortion);
     }
