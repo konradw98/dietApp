@@ -1,10 +1,8 @@
 package com.konrad.dietApp.meal;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 public class Meal {
@@ -20,6 +18,8 @@ public class Meal {
     private int portions=1;
     private String email;
     LocalDate date;
+    private String operation;
+    private long timestamp;
 
     public Meal(){};
     public Meal(int id, String name, float kcal, int protein, int fat, int carbo,String email, LocalDate date) {
@@ -33,10 +33,44 @@ public class Meal {
         this.date=date;
     }
 
+    public String getOperation() {
+        return operation;
+    }
+
+    public void setOperation(String operation) {
+        this.operation = operation;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
+
     public LocalDate getDate() {
         return date;
     }
+    @PrePersist
+    public void onPrePersist() {
+        audit("INSERT");
+    }
 
+    @PreUpdate
+    public void onPreUpdate() {
+        audit("UPDATE");
+    }
+
+    @PreRemove
+    public void onPreRemove() {
+        audit("DELETE");
+    }
+
+    private void audit(String operation) {
+        setOperation(operation);
+        setTimestamp((new Date()).getTime());
+    }
     public void setDate(LocalDate date) {
         this.date = date;
     }
