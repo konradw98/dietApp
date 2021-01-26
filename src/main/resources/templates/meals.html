@@ -5,11 +5,15 @@
     <title>products</title>
 </head>
 <body>
-<div align="center">
+<div style="float:left"><form th:action="@{/logout}" method="post"><input type="submit" value="Sign Out" /> </form></div>
+
+    <div align="center">
     <h1>LISTA POSILKOW TWOICH POSIŁKÓW DZIŚ</h1>
-    <a th:href="@{'products/'}">ADD  PRODUCT FROM LIST</a> </br>
-    <a th:href="@{'new_meal/'}">ADD  YOUR OWN MEAL</a>
-    <a th:href="@{'allMeals/'}">SHOW MEALS HISTORY</a>
+
+        <form th:action="@{/products}" ><input type="submit" value="ADD PRODUCT FROM LIST" /> </form>
+        <form th:action="@{/new_meal}" ><input type="submit" value="ADD YOUR OWN MEAL" /> </form>
+        <form th:action="@{/allMeals}" ><input type="submit" value="SHOW YOUR MEALS HISTORY" /> </form>
+
 </br>
     <table border="1" cellpadding="10">
         <thead>

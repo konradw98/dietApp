@@ -27,7 +27,7 @@ public class MealController {
         LocalDate date=LocalDate.now();
         List<Meal> listMeals=mealService.findAllMealsByEmailAndDate(email,date);
         model.addAttribute("listMeals",listMeals);
-        Float sumKcal=mealService.getSumKcalByEmailAndDate(email, date); //Float zamiast float, zeby obslugiwas "null" 
+        Float sumKcal=mealService.getSumKcalByEmailAndDate(email, date); //Float zamiast float, zeby obslugiwas "null"
 
         model.addAttribute("sumKcal",sumKcal);
          String newPortion="2";
