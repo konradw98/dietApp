@@ -1,5 +1,8 @@
 package com.konrad.dietApp.meal;
 
+import com.konrad.dietApp.user.User;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
@@ -20,9 +23,13 @@ public class Meal {
     LocalDate date;
     private String operation;
     private long timestamp;
+    @ManyToOne
+    private User user;
+    
+
 
     public Meal(){};
-    public Meal(int id, String name, float kcal, int protein, int fat, int carbo,String email, LocalDate date) {
+    public Meal(int id, String name, float kcal, int protein, int fat, int carbo,String email, LocalDate date, User user) {
         this.id = id;
         this.name = name;
         this.kcal = kcal;
@@ -31,6 +38,15 @@ public class Meal {
         this.fat=fat;
         this.email=email;
         this.date=date;
+        this.user=user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getOperation() {
@@ -52,7 +68,7 @@ public class Meal {
     public LocalDate getDate() {
         return date;
     }
-    @PrePersist
+   @PrePersist
     public void onPrePersist() {
         audit("INSERT");
     }

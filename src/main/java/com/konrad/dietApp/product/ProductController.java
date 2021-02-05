@@ -2,6 +2,7 @@ package com.konrad.dietApp.product;
 
 import com.konrad.dietApp.meal.Meal;
 import com.konrad.dietApp.meal.MealService;
+import com.konrad.dietApp.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -15,12 +16,15 @@ import java.util.Optional;
 
 @Controller
 public class ProductController {
-    int i=1;
+    //int i=1;
     @Autowired
     ProductService productService;
 
     @Autowired
     MealService mealService;
+
+    @Autowired
+    UserService userService;
 
     @RequestMapping("/products")
     public String viewAllProducts(Model model){
@@ -37,7 +41,7 @@ public class ProductController {
 
   @RequestMapping("/products/save/{id}")
     public String saveProduct(@PathVariable(name="id") int id){ // na razie pobieranie bedzie zadeklarowane
-        i++;
+      //  i++;
         Optional<Product> product= productService.getProductById(id);
       Meal meal= new Meal();
       meal.setName(product.get().getName());
@@ -45,7 +49,8 @@ public class ProductController {
       meal.setFat(product.get().getFat());
       meal.setProtein(product.get().getProtein());
       meal.setKcal(product.get().getKcal());
-      meal.setId(i);
+     // meal.setId(i);
+      meal.setUser(userService.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName()));
       meal.setEmail(SecurityContextHolder.getContext().getAuthentication().getName());
       meal.setDate(LocalDate.now());
       mealService.save(meal);

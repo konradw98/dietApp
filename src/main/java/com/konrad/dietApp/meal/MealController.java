@@ -1,6 +1,7 @@
 package com.konrad.dietApp.meal;
 
 import com.konrad.dietApp.product.Product;
+import com.konrad.dietApp.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,9 @@ public class MealController {
     @Autowired
     MealService mealService;
 
+    @Autowired
+   UserService userService;
+
     @RequestMapping("/meals")
     public String viewAllMeals(Model model){
         String email=SecurityContextHolder.getContext().getAuthentication().getName();
@@ -33,7 +37,7 @@ public class MealController {
          String newPortion="2";
        model.addAttribute("newPortion",newPortion);
 
-
+        System.out.println("ID uzytkownika o mailu "+email+" to "+userService.findIdByEmail(email));
         //String name = SecurityContextHolder.getContext().getAuthentication().getName();
        // LocalDate date=LocalDate.now();
         //System.out.println("/meals aktualny uzytkownik"+name);
@@ -66,6 +70,7 @@ public class MealController {
     public String saveProduct(@ModelAttribute("meal") Meal meal){
         meal.setEmail(SecurityContextHolder.getContext().getAuthentication().getName());
         meal.setDate(LocalDate.now());
+        meal.setUser(userService.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName()));
         mealService.save(meal);
 
         return "redirect:/meals";
