@@ -22,6 +22,17 @@ public class User {
 	@Column(name = "last_name", nullable = false, length = 20)
 	private String lastName;
 
+	@Column(nullable = true, length = 64)
+	private String photos;
+
+	@Transient
+	public String getPhotosImagePath() {
+		if (photos == null || id == null) return null;
+
+		return "/user-photos/" + id + "/" + photos;
+
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -61,7 +72,13 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
-	
-	
+
+
+	public String getPhotos() {
+		return photos;
+	}
+
+	public void setPhotos(String photos) {
+		this.photos = photos;
+	}
 }

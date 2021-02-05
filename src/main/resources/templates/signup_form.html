@@ -19,7 +19,14 @@
 					<input type="email" th:field="*{email}" class="form-control" required />
 				</div>
 			</div>
-			
+			<form th:action="@{/users/save}"
+				  th:object="${user}" method="post"
+				  enctype="multipart/form-data">
+				<div>
+					<label>Photos: </label>
+					<input type="file" name="image" accept="image/png, image/jpeg" />
+				</div>
+			</form>
 			<div class="form-group row">
 				<label class="col-4 col-form-label">Password: </label>
 				<div class="col-8">

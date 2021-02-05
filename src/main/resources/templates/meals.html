@@ -7,12 +7,13 @@
 <body>
 <div style="float:left"><form th:action="@{/logout}" method="post"><input type="submit" value="Sign Out" /> </form></div>
 
-    <div align="center">
+
     <h1>LISTA POSILKOW TWOICH POSIŁKÓW DZIŚ</h1>
 
         <form th:action="@{/products}" ><input type="submit" value="ADD PRODUCT FROM LIST" /> </form>
         <form th:action="@{/new_meal}" ><input type="submit" value="ADD YOUR OWN MEAL" /> </form>
         <form th:action="@{/allMeals}" ><input type="submit" value="SHOW YOUR MEALS HISTORY" /> </form>
+        <form th:action="@{/show_user}" ><input type="submit" value="SHOW USER DETAILS" /> </form>
 
 </br>
     <table border="1" cellpadding="10">
