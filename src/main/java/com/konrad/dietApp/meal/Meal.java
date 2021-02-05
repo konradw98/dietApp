@@ -1,5 +1,6 @@
 package com.konrad.dietApp.meal;
 
+import com.konrad.dietApp.product.Product;
 import com.konrad.dietApp.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -25,11 +26,12 @@ public class Meal {
     private long timestamp;
     @ManyToOne
     private User user;
-    
+    @ManyToOne
+    private Product product;
 
 
     public Meal(){};
-    public Meal(int id, String name, float kcal, int protein, int fat, int carbo,String email, LocalDate date, User user) {
+    public Meal(int id, String name, float kcal, int protein, int fat, int carbo,String email, LocalDate date, User user, Product product) {
         this.id = id;
         this.name = name;
         this.kcal = kcal;
@@ -39,6 +41,7 @@ public class Meal {
         this.email=email;
         this.date=date;
         this.user=user;
+        this.product=product;
     }
 
     public User getUser() {
@@ -47,6 +50,14 @@ public class Meal {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public String getOperation() {

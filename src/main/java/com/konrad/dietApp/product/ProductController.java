@@ -49,7 +49,7 @@ public class ProductController {
       meal.setFat(product.get().getFat());
       meal.setProtein(product.get().getProtein());
       meal.setKcal(product.get().getKcal());
-     // meal.setId(i);
+      meal.setProduct(product.get());
       meal.setUser(userService.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName()));
       meal.setEmail(SecurityContextHolder.getContext().getAuthentication().getName());
       meal.setDate(LocalDate.now());
