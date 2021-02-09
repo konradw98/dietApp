@@ -37,7 +37,7 @@ public class MealController {
          String newPortion="2";
        model.addAttribute("newPortion",newPortion);
 
-        System.out.println("ID uzytkownika o mailu "+email+" to "+userService.findIdByEmail(email));
+       // System.out.println("ID uzytkownika o mailu "+email+" to "+userService.findIdByEmail(email));
         //String name = SecurityContextHolder.getContext().getAuthentication().getName();
        // LocalDate date=LocalDate.now();
         //System.out.println("/meals aktualny uzytkownik"+name);

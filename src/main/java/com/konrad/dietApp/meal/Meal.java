@@ -79,24 +79,29 @@ public class Meal {
     public LocalDate getDate() {
         return date;
     }
-   @PrePersist
+
+   @PostPersist
     public void onPrePersist() {
         audit("INSERT");
+       //System.out.println("insert dziala");
     }
 
-    @PreUpdate
+    @PostUpdate
     public void onPreUpdate() {
         audit("UPDATE");
+       // System.out.println("update dziala");
     }
 
-    @PreRemove
+    @PostRemove
     public void onPreRemove() {
-        audit("DELETE");
+        System.out.println("deleta dziala");
+       // audit("DELETE");
     }
 
     private void audit(String operation) {
         setOperation(operation);
         setTimestamp((new Date()).getTime());
+
     }
     public void setDate(LocalDate date) {
         this.date = date;
