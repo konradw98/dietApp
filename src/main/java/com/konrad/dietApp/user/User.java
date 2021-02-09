@@ -25,6 +25,45 @@ public class User {
 	@Column(nullable = true, length = 64)
 	private String photos;
 
+	private int weight;
+	private  int height;
+	private int age;
+	private int kcalPerDay;
+
+
+
+	public int getWeight() {
+		return weight;
+	}
+
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public int getKcalPerDay() {
+		return kcalPerDay;
+	}
+
+	public void setKcalPerDay(int kcalPerDay) {
+		this.kcalPerDay = kcalPerDay;
+	}
+
 	@Transient
 	public String getPhotosImagePath() {
 		if (photos == null || id == null) return null;

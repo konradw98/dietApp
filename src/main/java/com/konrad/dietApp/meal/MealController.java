@@ -1,6 +1,7 @@
 package com.konrad.dietApp.meal;
 
 import com.konrad.dietApp.product.Product;
+import com.konrad.dietApp.user.User;
 import com.konrad.dietApp.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -36,6 +37,10 @@ public class MealController {
         model.addAttribute("sumKcal",sumKcal);
          String newPortion="2";
        model.addAttribute("newPortion",newPortion);
+
+       User user=userService.findUserByEmail(email);
+
+       model.addAttribute("user",user);
 
        // System.out.println("ID uzytkownika o mailu "+email+" to "+userService.findIdByEmail(email));
         //String name = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -88,6 +93,16 @@ public class MealController {
 
        return "redirect:/meals";
    }
+
+    @RequestMapping(value = "/meals/updatePortionDown/{id}")
+    public String updatePortionDown(@PathVariable(name="id") int id){// @ModelAttribute("newPortion") String newPortion){
+
+        //System.out.println("id:"+id+" newPortion"+newPortion);
+        mealService.updatePortionByIdDown(id,0.5);
+
+
+        return "redirect:/meals";
+    }
 
     @RequestMapping("/allMeals")
     public String viewAllMealsByUser(Model model){

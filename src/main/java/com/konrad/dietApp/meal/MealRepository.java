@@ -21,9 +21,17 @@ public interface MealRepository  extends JpaRepository<Meal, Integer> {
     @Query(value="UPDATE meal SET meal.portions=meal.portions*?2, meal.kcal=meal.kcal*?2, meal.protein=meal.protein*?2, meal.carbo=meal.carbo*?2, meal.fat=meal.fat*?2, meal.operation='UPDATE' WHERE meal.id=?1", nativeQuery = true)
     void updatePortionById(int id, int newPortion);
 
+    @Modifying
+    @Transactional
+    @Query(value="UPDATE meal SET meal.portions=meal.portions*?2, meal.kcal=meal.kcal*?2, meal.protein=meal.protein*?2, meal.carbo=meal.carbo*?2, meal.fat=meal.fat*?2, meal.operation='UPDATE' WHERE meal.id=?1", nativeQuery = true)
+    void updatePortionByIdDown(int id, double newPortion);
+
     @Query(value="SELECT * FROM meal WHERE meal.email=?1", nativeQuery = true)
     List<Meal> findAllByEmail(String email);
 
     @Query(value="SELECT * FROM meal WHERE meal.email=?1 AND meal.date=?2",nativeQuery = true)
     List<Meal> findAllByEmailAndDate(String email, LocalDate date);
+
+    @Query(value="SELECT * FROM meal WHERE meal.id=?1",nativeQuery = true)
+    Meal getMealById(int email);
 }

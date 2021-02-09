@@ -49,4 +49,11 @@ public class MealService {
         mealRepository.updatePortionById(id, newPortion);
     }
 
+    public void updatePortionByIdDown(int id, double newPortion){
+        mealRepository.updatePortionByIdDown(id, newPortion);
+    }
+    public Meal getMealById(int id){
+      return  mealRepository.getMealById(id);
+    }
+
 }

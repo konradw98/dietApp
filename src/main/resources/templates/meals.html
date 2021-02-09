@@ -8,12 +8,16 @@
 <div style="float:left"><form th:action="@{/logout}" method="post"><input type="submit" value="Sign Out" /> </form></div>
 
 
-    <h1>LISTA POSILKOW TWOICH POSIŁKÓW DZIŚ</h1>
 
+
+<h1>WITAJ <span th:text="${user.getFirstName()}"></span> <span th:text="${user.getLastName()}"></span> !!!  </h1>
+<h2>TWÓJ LIMIT KALORII TO <span th:text="${user.getKcalPerDay()}"></span> A WYKORZYSTAŁEŚ JUŻ <span th:text="${sumKcal}"></span> </h2>
+<h3>LISTA POSILKOW TWOICH POSIŁKÓW DZIŚ</h3>
         <form th:action="@{/products}" ><input type="submit" value="ADD PRODUCT FROM LIST" /> </form>
         <form th:action="@{/new_meal}" ><input type="submit" value="ADD YOUR OWN MEAL" /> </form>
         <form th:action="@{/allMeals}" ><input type="submit" value="SHOW YOUR MEALS HISTORY" /> </form>
         <form th:action="@{/show_user}" ><input type="submit" value="SHOW USER DETAILS" /> </form>
+
 
 </br>
     <table border="1" cellpadding="10">
@@ -39,12 +43,13 @@
             <td th:text="${meal.getKcal()}">KCAL</td>
             <td th:text="${meal.getPortions()}">PORTION</td>
             <td><form action=# th:action="@{'/meals/updatePortion/'+${meal.getId()}}">
-                <fieldset>
-                    <input type="text" th:field="*{newPortion}"/>
-                    <input type="submit" value="ZWIEKSZ PORCJE DWUKROTNIE!"/>
-                </fieldset>
-            </form>
 
+                    <input type="submit" value="ZWIEKSZ PORCJE!"/>
+            </form>
+                <form action=# th:action="@{'/meals/updatePortionDown/'+${meal.getId()}}">
+
+                    <input type="submit" value="ZMNIEJSz PORCJE!"/>
+                </form>
             <td>
 
                 <a th:href="@{'/meals/delete/' + ${meal.getId()}}">Delete</a>
@@ -53,7 +58,7 @@
         </tbody>
     </table>
 
-    <p >SUMA DZIENNA KCAL:<span th:text="${sumKcal}"></span> </p>
+    <p >SUMA KCAL:<span th:text="${sumKcal}"></span> </p>
 </div>
 
 </body>

@@ -1,5 +1,6 @@
 package com.konrad.dietApp.user;
 
+import com.konrad.dietApp.meal.Meal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -81,5 +83,15 @@ public class UserController {
 
 		return "show_user";
 	}
+
+	@RequestMapping(value="/saveUser")
+	public String updateUser(@ModelAttribute("user") User user){
+
+		userRepo.save(user);
+
+		return "redirect:/show_user";
+	}
+
+
 
 }
