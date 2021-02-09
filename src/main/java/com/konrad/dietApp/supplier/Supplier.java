@@ -13,17 +13,17 @@ public class Supplier {
     private String adress;
     private String opinion;
     private String phoneNumber;
-    @ManyToOne
-    Product product;
+   // @ManyToOne
+   // Product product;
 
     public Supplier(){}
 
-    public Supplier(int id, String name, String adress, String opinion,String phoneNumber ,Product product) {
+    public Supplier(int id, String name, String adress, String opinion,String phoneNumber) {
         this.id = id;
         this.name = name;
         this.adress = adress;
         this.opinion = opinion;
-        this.product=product;
+      //  this.product=product;
         this.phoneNumber=phoneNumber;
 
     }
@@ -36,14 +36,14 @@ public class Supplier {
         this.phoneNumber = phoneNumber;
     }
 
-    public Product getProduct() {
+   /* public Product getProduct() {
         return product;
     }
 
     public void setProduct(Product product) {
         this.product = product;
     }
-
+*/
     public int getId() {
         return id;
     }

@@ -94,8 +94,8 @@ public class Meal {
 
     @PostRemove
     public void onPreRemove() {
-        System.out.println("deleta dziala");
-       // audit("DELETE");
+        //System.out.println("deleta dziala");
+       audit("DELETE");
     }
 
     private void audit(String operation) {

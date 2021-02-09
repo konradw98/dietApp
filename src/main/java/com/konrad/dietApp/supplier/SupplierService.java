@@ -14,7 +14,11 @@ public class SupplierService {
         return supplierRepository.findAll();
     }
 
-    public List<Supplier> getSupplierByProductId(int id){
+   /* public List<Supplier> getSupplierByProductId(int id){
         return supplierRepository.findSupplierByProductId(id);
+    }*/
+
+    public Supplier getSupplierById(int id){
+        return supplierRepository.findSupplierById(id);
     }
 }
