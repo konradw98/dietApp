@@ -68,8 +68,9 @@ public class User {
 	public String getPhotosImagePath() {
 		if (photos == null || id == null) return null;
 
-		return "/user-photos/" + id + "/" + photos;
-
+		//return "/user-photos/" + id + "/" + photos;
+		//return "images/user-photos/3/PROFILOWE.png";
+		return "src/main/resources/static.images.user-photos/" +id+"/"+photos;
 	}
 
 	public Long getId() {

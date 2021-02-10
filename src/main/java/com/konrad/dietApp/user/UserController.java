@@ -59,7 +59,7 @@ public class UserController {
 		String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 		user.setPhotos(fileName);
 		User savedUser = userRepo.save(user);
-		String uploadDir = "user-photos/" + savedUser.getId();
+		String uploadDir = "src/main/resources/static/images/user-photos/" + savedUser.getId();
 		FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
 	/*	System.out.println("funkcja sie wykonuje saveUser");

@@ -73,6 +73,7 @@ public class MealController {
 
     @RequestMapping(value="/save")
     public String saveProduct(@ModelAttribute("meal") Meal meal){
+
         meal.setEmail(SecurityContextHolder.getContext().getAuthentication().getName());
         meal.setDate(LocalDate.now());
         meal.setUser(userService.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName()));
@@ -80,6 +81,28 @@ public class MealController {
 
         return "redirect:/meals";
     }
+
+    @RequestMapping(value="/saveThread")
+    public String saveProductThread(@ModelAttribute("meal") Meal meal){
+        String email=SecurityContextHolder.getContext().getAuthentication().getName();
+        Thread saveThread = new Thread(() ->{
+                meal.setEmail(email);
+        meal.setDate(LocalDate.now());
+        meal.setUser(userService.findUserByEmail(email));
+            try {
+
+                Thread.sleep(3000);
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            mealService.save(meal);
+            });
+        saveThread.start();
+        return "redirect:/meals";
+    }
+
+
    // @RequestMapping(value="updatePortions")
   //  public String updatePortions(@ModelAttribute("meal") Meal meal,)
 //meals/upatePortion/'+${meal.getId()}}
@@ -113,6 +136,7 @@ public class MealController {
     }
     @GetMapping("/allMeals/export/excel")
     public void exportToExcel(HttpServletResponse response) throws IOException {
+
         response.setContentType("application/octet-stream");
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
         String currentDateTime = dateFormatter.format(new Date());
@@ -127,5 +151,6 @@ public class MealController {
 
         excelExporter.export(response);
     }
+
 
 }
