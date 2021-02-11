@@ -4,22 +4,152 @@
     <meta charset="UTF-8">
     <title>products</title>
 </head>
+<style>
+
+
+    body {
+        background: #fafafa url(https://jackrugile.com/images/misc/noise-diagonal.png);
+        color: #444;
+        font: 100%/30px 'Helvetica Neue', helvetica, arial, sans-serif;
+        text-shadow: 0 1px 0 #fff;
+    }
+    h1 {
+        font-size:50px;
+        font-family: "Times New Roman", Times, serif;
+        color: black;
+    }
+    h1 {
+        font-size:30px;
+        font-family: "Times New Roman", Times, serif;
+        color: black;
+    }
+
+    p {
+        font-size:30px;
+        font-family: "Times New Roman", Times, serif;
+        color: red;
+    }
+    strong {
+        font-weight: bold;
+    }
+
+    em {
+        font-style: italic;
+    }
+
+    table {
+        background: #f5f5f5;
+        border-collapse: separate;
+        box-shadow: inset 0 1px 0 #fff;
+        font-size: 12px;
+        line-height: 24px;
+        margin: 30px auto;
+        text-align: left;
+        width: 800px;
+    }
+
+    th {
+        background: url(https://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#777, #444);
+        border-left: 1px solid #555;
+        border-right: 1px solid #777;
+        border-top: 1px solid #555;
+        border-bottom: 1px solid #333;
+        box-shadow: inset 0 1px 0 #999;
+        color: #fff;
+        font-weight: bold;
+        padding: 10px 15px;
+        position: relative;
+        text-shadow: 0 1px 0 #000;
+    }
+
+    th:after {
+        background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.08));
+        content: '';
+        display: block;
+        height: 25%;
+        left: 0;
+        margin: 1px 0 0 0;
+        position: absolute;
+        top: 25%;
+        width: 100%;
+    }
+
+    th:first-child {
+        border-left: 1px solid #777;
+        box-shadow: inset 1px 1px 0 #999;
+    }
+
+    th:last-child {
+        box-shadow: inset -1px 1px 0 #999;
+    }
+
+    td {
+        border-right: 1px solid #fff;
+        border-left: 1px solid #e8e8e8;
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #e8e8e8;
+        padding: 10px 15px;
+        position: relative;
+        transition: all 300ms;
+    }
+
+    td:first-child {
+        box-shadow: inset 1px 0 0 #fff;
+    }
+
+    td:last-child {
+        border-right: 1px solid #e8e8e8;
+        box-shadow: inset -1px 0 0 #fff;
+    }
+
+    tr {
+        background: url(https://jackrugile.com/images/misc/noise-diagonal.png);
+    }
+
+    tr:nth-child(odd) td {
+        background: #f1f1f1 url(https://jackrugile.com/images/misc/noise-diagonal.png);
+    }
+
+    tr:last-of-type td {
+        box-shadow: inset 0 -1px 0 #fff;
+    }
+
+    tr:last-of-type td:first-child {
+        box-shadow: inset 1px -1px 0 #fff;
+    }
+
+    tr:last-of-type td:last-child {
+        box-shadow: inset -1px -1px 0 #fff;
+    }
+
+    tbody:hover td {
+        color: transparent;
+        text-shadow: 0 0 3px #aaa;
+    }
+
+    tbody:hover tr:hover td {
+        color: #444;
+        text-shadow: 0 1px 0 #fff;
+    }
+
+</style>
 <body>
-<div style="float:left"><form th:action="@{/logout}" method="post"><input type="submit" value="Sign Out" /> </form></div>
+<div class="topnav">
+    <a class="active" th:href="@{/logout}">Sign out</a>
+    <a th:href="@{/meals}">Home</a>
+    <a th:href="@{/show_user}">Profile</a>
+    <a th:href="@{/allMeals}">History</a>
+</div>
 
 
 
+<div align="center">
+<h1>Welcome <span th:text="${user.getFirstName()}"></span> <span th:text="${user.getLastName()}"></span> !!!  </h1>
+<h2>Your kcal limit per day:<strong><span th:text="${user.getKcalPerDay()}"></span></strong>  </h2>
 
-<h1>WITAJ <span th:text="${user.getFirstName()}"></span> <span th:text="${user.getLastName()}"></span> !!!  </h1>
-<h2>TWÓJ LIMIT KALORII TO <span th:text="${user.getKcalPerDay()}"></span> A WYKORZYSTAŁEŚ JUŻ <span th:text="${sumKcal}"></span> </h2>
-<h3>LISTA POSILKOW TWOICH POSIŁKÓW DZIŚ</h3>
-        <form th:action="@{/products}" ><input type="submit" value="ADD PRODUCT FROM LIST" /> </form>
+        <form th:action="@{/products}" ><input type="submit" value="ADD MEAL FROM LIST" /> </form>
         <form th:action="@{/new_meal}" ><input type="submit" value="ADD YOUR OWN MEAL" /> </form>
-        <form th:action="@{/allMeals}" ><input type="submit" value="SHOW YOUR MEALS HISTORY" /> </form>
-        <form th:action="@{/show_user}" ><input type="submit" value="SHOW USER DETAILS" /> </form>
 
-
-</br>
     <table border="1" cellpadding="10">
         <thead>
 
@@ -58,7 +188,7 @@
         </tbody>
     </table>
 
-    <p >SUMA KCAL:<span th:text="${sumKcal}"></span> </p>
+    <p>SUMA KCAL:<span th:text="${sumKcal}"></span> </p>
 </div>
 
 </body>
