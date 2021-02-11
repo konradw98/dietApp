@@ -33,10 +33,13 @@ public class MealController {
         List<Meal> listMeals=mealService.findAllMealsByEmailAndDate(email,date);
         model.addAttribute("listMeals",listMeals);
         Float sumKcal=mealService.getSumKcalByEmailAndDate(email, date); //Float zamiast float, zeby obslugiwas "null"
-
         model.addAttribute("sumKcal",sumKcal);
-         String newPortion="2";
-       model.addAttribute("newPortion",newPortion);
+        Integer sumProtein=mealService.getSumProteinByEmailAndDate(email, date); //Float zamiast float, zeby obslugiwas "null"
+        model.addAttribute("sumProtein",sumProtein);
+        Integer sumCarbo=mealService.getSumCarboByEmailAndDate(email, date); //Float zamiast float, zeby obslugiwas "null"
+        model.addAttribute("sumCarbo",sumCarbo);
+        Integer sumFat=mealService.getSumFatByEmailAndDate(email, date); //Float zamiast float, zeby obslugiwas "null"
+        model.addAttribute("sumFat",sumFat);
 
        User user=userService.findUserByEmail(email);
 

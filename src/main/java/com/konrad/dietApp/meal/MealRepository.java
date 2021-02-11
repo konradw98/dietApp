@@ -15,6 +15,15 @@ public interface MealRepository  extends JpaRepository<Meal, Integer> {
 
     @Query(value = "SELECT SUM(meal.kcal) FROM meal WHERE meal.email=?1 AND meal.date=?2", nativeQuery = true)
     Float getSumKcalByEmailAndDate(String email, LocalDate date);
+
+    @Query(value = "SELECT SUM(meal.protein) FROM meal WHERE meal.email=?1 AND meal.date=?2", nativeQuery = true)
+    Integer getSumProteinByEmailAndDate(String email, LocalDate date);
+
+    @Query(value = "SELECT SUM(meal.carbo) FROM meal WHERE meal.email=?1 AND meal.date=?2", nativeQuery = true)
+    Integer getSumCarboByEmailAndDate(String email, LocalDate date);
+
+    @Query(value = "SELECT SUM(meal.fat) FROM meal WHERE meal.email=?1 AND meal.date=?2", nativeQuery = true)
+    Integer getSumFatByEmailAndDate(String email, LocalDate date);
     //UPDATE diet4.meal SET diet4.meal.portions=9 WHERE diet4.meal.id=4
     @Modifying
     @Transactional
