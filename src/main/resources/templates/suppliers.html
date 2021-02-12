@@ -127,21 +127,17 @@
     <br/> <br/>
     <table border="1" cellpadding="10">
         <thead>
-        <th>ID</th>
         <th>Name</th>
-        <th>Address</th>
         <th>Address</th>
         <th>Phone Number</th>
         <th>Opinion</th>
         </thead>
         <tbody>
         <tr th:each="supplier:${listSuppliers}">
-            <td th:text="${supplier.getId()}">ID</td>
             <td th:text="${supplier.getName()}">Name</td>
             <td th:text="${supplier.getAdress()}">Address</td>
             <td th:text="${supplier.getPhoneNumber()}">Phone Number</td>
             <td th:text="${supplier.getOpinion()}">Opinion</td>
-
 
         </tr>
         </tbody>

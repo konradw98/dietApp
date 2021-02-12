@@ -32,25 +32,19 @@ public class MealController {
         LocalDate date=LocalDate.now();
         List<Meal> listMeals=mealService.findAllMealsByEmailAndDate(email,date);
         model.addAttribute("listMeals",listMeals);
-        Float sumKcal=mealService.getSumKcalByEmailAndDate(email, date); //Float zamiast float, zeby obslugiwas "null"
+        Float sumKcal=mealService.getSumKcalByEmailAndDate(email, date);
         model.addAttribute("sumKcal",sumKcal);
-        Integer sumProtein=mealService.getSumProteinByEmailAndDate(email, date); //Float zamiast float, zeby obslugiwas "null"
+        Integer sumProtein=mealService.getSumProteinByEmailAndDate(email, date);
         model.addAttribute("sumProtein",sumProtein);
-        Integer sumCarbo=mealService.getSumCarboByEmailAndDate(email, date); //Float zamiast float, zeby obslugiwas "null"
+        Integer sumCarbo=mealService.getSumCarboByEmailAndDate(email, date);
         model.addAttribute("sumCarbo",sumCarbo);
-        Integer sumFat=mealService.getSumFatByEmailAndDate(email, date); //Float zamiast float, zeby obslugiwas "null"
+        Integer sumFat=mealService.getSumFatByEmailAndDate(email, date);
         model.addAttribute("sumFat",sumFat);
 
        User user=userService.findUserByEmail(email);
 
        model.addAttribute("user",user);
 
-       // System.out.println("ID uzytkownika o mailu "+email+" to "+userService.findIdByEmail(email));
-        //String name = SecurityContextHolder.getContext().getAuthentication().getName();
-       // LocalDate date=LocalDate.now();
-        //System.out.println("/meals aktualny uzytkownik"+name);
-       // System.out.println("/meals aktualna data"+date);
-       // System.out.println("lista posilkow"+listMeals);
         return "meals";
     }
 

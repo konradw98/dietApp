@@ -174,11 +174,11 @@
             <td th:text="${meal.getPortions()}">PORTION</td>
             <td><form action=# th:action="@{'/meals/updatePortion/'+${meal.getId()}}">
 
-                    <input type="submit" value="ZWIEKSZ PORCJE!"/>
+                    <input type="submit" value="INCREASE!"/>
             </form>
                 <form action=# th:action="@{'/meals/updatePortionDown/'+${meal.getId()}}">
 
-                    <input type="submit" value="ZMNIEJSz PORCJE!"/>
+                    <input type="submit" value="REDUCE!"/>
                 </form>
             <td>
 
