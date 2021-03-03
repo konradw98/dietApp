@@ -51,5 +51,5 @@
 This page gives you the option to export data to excel.
 
 ## Database schema
-![alt text](https://github.com/konradw98/dietApp/blob/42648347cc2928d0d1476beedb3a44a4cd4d39c5/BDschema.png)
+![alt text](https://github.com/konradw98/dietApp/blob/4fa7aaf45d9c82ef539f7a7664047fb21dfb8d10/BDschema.png)
 
